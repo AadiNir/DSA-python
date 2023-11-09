@@ -1,6 +1,5 @@
-//in linked list head and tail
-class linkedlist{
-    Node head ;
+class linkedls{
+    Node head;
     class Node{
         int data;
         Node next;
@@ -10,7 +9,7 @@ class linkedlist{
         }
     }
 
-    //insert first node
+    // add element in the first pos
     public void addfirst(int data){
         Node newnode = new Node(data);
         if(head == null){
@@ -19,10 +18,8 @@ class linkedlist{
         }
         newnode.next = head;
         head = newnode;
-
     }
-
-    //add last
+    //add ele in the last pos
     public void addlast(int data){
         Node newnode = new Node(data);
         if(head == null){
@@ -31,55 +28,59 @@ class linkedlist{
         }
         Node currnode = head;
         while(currnode.next!=null){
-            currnode= currnode.next;
+            currnode = currnode.next;
         }
         currnode.next = newnode;
     }
 
-    //delete the first elements
+    //delete ele in the first pos in ll
+
     public void deletefirst(){
         if(head == null){
-            System.out.print("ll is empty");
+            System.out.println("ll is empty");
+            return;
         }
         head = head.next;
-    }
+    } 
 
-    //delete last val
+    //delete ele in the last pos in  ll
+
     public void deletelast(){
         if(head == null){
-            System.out.print("ll is empty");
+            System.out.println("ll is empty");
             return;
         }
-        Node currnode = head;
-        while(currnode!=null){
-            currnode = currnode.next;
+        Node secondlastnode = head;
+        Node lastnode = head.next;
+        while(lastnode.next!=null){
+            secondlastnode = lastnode;
+            lastnode = lastnode.next;
         }
-        currnode.next = null;
+        secondlastnode.next = null;
     }
 
-    //print the linkedllist
-    public void printlist(){
+    public void printll(){
+        Node currnode = head;
         if(head == null){
-            System.out.print("ll is empty");
+            System.out.println("ll is empty");
             return;
         }
-        Node currnode = head;
         while(currnode!=null){
             System.out.print(currnode.data+"=>");
             currnode = currnode.next;
         }
-        System.out.print("null ");
-    }
+        System.out.print("null");
 
+    }
     public static void main(String[] args){
-        linkedlist list = new linkedlist();
-        list.addfirst(1);
-        list.addfirst(2);
-        list.addfirst(3);
-        list.addlast(5);
-        list.printlist();
-        list.deletelast();
-        list.printlist();
+        linkedls ll = new linkedls();
+        ll.addfirst(1);
+        ll.addfirst(2);
+        ll.addfirst(3);
+        ll.addfirst(4);
+        ll.addlast(10);
+        ll.deletelast();
+        ll.printll();
 
     }
 }

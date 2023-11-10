@@ -1,5 +1,9 @@
 class linkedls{
     Node head;
+    private int size;
+    linkedls(){
+        this.size = 0;
+    }
     class Node{
         int data;
         Node next;
@@ -12,16 +16,19 @@ class linkedls{
     // add element in the first pos
     public void addfirst(int data){
         Node newnode = new Node(data);
+                size++;
+
         if(head == null){
             head = newnode;
             return;
         }
-        newnode.next = head;
+       newnode.next = head;
         head = newnode;
     }
     //add ele in the last pos
     public void addlast(int data){
         Node newnode = new Node(data);
+        size++;
         if(head == null){
             head = newnode;
             return;
@@ -40,6 +47,7 @@ class linkedls{
             System.out.println("ll is empty");
             return;
         }
+        size--;
         head = head.next;
     } 
 
@@ -50,6 +58,7 @@ class linkedls{
             System.out.println("ll is empty");
             return;
         }
+        size--;
         Node secondlastnode = head;
         Node lastnode = head.next;
         while(lastnode.next!=null){
@@ -57,6 +66,10 @@ class linkedls{
             lastnode = lastnode.next;
         }
         secondlastnode.next = null;
+    }
+
+    public int getsize(){
+        return size;
     }
 
     public void printll(){
@@ -81,6 +94,7 @@ class linkedls{
         ll.addlast(10);
         ll.deletelast();
         ll.printll();
+        System.out.println(ll.getsize());
 
     }
 }

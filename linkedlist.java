@@ -71,15 +71,39 @@ class linkedlist{
         System.out.print("null ");
     }
 
+    public void addwind(int index,int data){
+        Node newnode = new Node(data);
+        if(index == 0){
+            newnode.next = head;
+            head = newnode;
+            return;
+        }
+        Node temp = recur(index,head); 
+        System.out.println(temp.data);
+        Node temp2 = temp.next;
+        temp.next = newnode;
+        newnode.next = temp2; 
+    }
+    public Node recur(int index,Node currnode){
+        if(index==1){
+            return currnode;
+        }
+        currnode = currnode.next;
+        index=index-1;
+        System.out.println(index);
+        return recur(index,currnode);
+    
+    }
+
+
     public static void main(String[] args){
         linkedlist list = new linkedlist();
         list.addfirst(1);
         list.addfirst(2);
         list.addfirst(3);
         list.addlast(5);
+        list.addwind(1,12);
         list.printlist();
-        list.deletelast();
-        list.printlist();
-
+     
     }
 }

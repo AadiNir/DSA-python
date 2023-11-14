@@ -23,6 +23,16 @@ class circularll {
         newnode.next = header;
         tail = newnode;
     }
+
+    public void delete(int data){
+        Node currnode = header;
+        Node afternode = header.next;
+        while(currnode.value!=data){
+            currnode = currnode.next;
+            afternode = currnode.next;
+        }
+
+    }
     public void printll(){
         Node currnode = header;
         if(header==null){
